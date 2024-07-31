@@ -1,0 +1,222 @@
+/* Estilos para el formulario de inicio de sesión */
+.login-form {
+    border-radius: 18px;
+    background-color: #af1414;
+    color: #000;
+    font-size: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    align-items: center;
+    text-align: center;
+    
+    
+    transform: translateY(20px) scale(0.95);
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.login-title {
+
+}
+
+.login-form-group {
+
+}
+
+.login-form-group img {
+
+}
+
+.input-container {
+
+}
+
+.input-icon {
+
+}
+
+.login-form-control {
+
+}
+
+.login-form-control:focus {
+
+}
+
+.toggle-password-icon {
+
+}
+
+.login-btn {
+
+}
+
+.login-btn:hover {
+
+}
+
+.login-btn:after {
+
+}
+
+.login-btn:hover:after {
+
+}
+
+.regis-container {
+
+}
+
+.regis {
+
+}
+
+.regis a {
+
+}
+
+.regis a:hover {
+ 
+}
+
+.success-message {
+
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 600px) {
+    .login-form {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .input-container {
+        width: 100%;
+    }
+
+    .input-icon {
+        left: 10px;
+    }
+
+    .login-form-control {
+        padding: 0.5rem 1.5rem; /* Ajusta el padding para pantallas pequeñas */
+    }
+
+    .toggle-password-icon {
+        right: 10px;
+    }
+
+    .login-btn {
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+
+.SeccionForm{
+    
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contendor-doble{
+    background-color: aqua; 
+    width: 80%;
+    height: 80vh;
+    display: flex;
+}
+
+.Contenedor1{
+    background-image: url("../../../assets/form.png");
+    width: 50%;
+    height: 100%;
+}
+
+.Contenedor2{
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ContenedorForm{
+    background-color: white;
+    width: 80%;
+    height: 80%;
+}
+
+.InputLogeate
+{
+width: 380px;
+height: 35px;
+border-radius: 10px;
+}
+
+.InputLogeate2
+{
+width: 350px;
+height: 35px;
+border-radius: 10px;
+}
+
+.Label{
+    margin-top: 3%;
+}
+
+.Formulario{
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MovBoton{
+    margin-top: 5%;
+}
+
+.BotonInicio{
+    background-color: black;
+    height: 40px;
+    width: 150px;
+    border-radius: 10px;
+    color: white;
+}
+
+.BotonInicio:hover{
+    background-color: rgb(61, 61, 61);
+}

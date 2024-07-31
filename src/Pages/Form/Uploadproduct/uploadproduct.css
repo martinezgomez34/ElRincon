@@ -1,0 +1,159 @@
+/* Contenedor del formulario */
+.upload-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Ajustes generales para el formulario */
+.product-form {
+  width: 100%;
+  max-width: 600px; /* Ancho máximo del formulario */
+  padding: 29px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1px;
+}
+
+/* Estilo del encabezado */
+.Product {
+  font-size: 25px;
+  text-align: center;
+  font-family: sans-serif;
+  margin-bottom: 20px; /* Espacio debajo del encabezado */
+}
+
+/* Estilo de los grupos de formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilo de las etiquetas */
+.form-group label {
+  display: block;
+  font-family: sans-serif;
+  font-size: 90%;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* Estilo de los inputs y textareas */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #007bff;
+}
+
+/* Estilo de los dropdowns para alineación horizontal */
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-col {
+  flex: 1;
+}
+
+/* Estilo para el input de archivo */
+.form-group input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.form-group input[type="file"]:hover,
+.form-group input[type="file"]:focus {
+  border-color: #007bff;
+}
+
+/* Estilo de la vista previa de la imagen */
+.image-preview {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón de subir producto */
+.btn-subir {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #121213;
+  color: #ffffff;
+  width: 100%; /* Asegura que el botón se ajuste al ancho del formulario */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-subir:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el contenedor de la imagen previa */
+.image-preview-container {
+  padding: 2%;  
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .product-form {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .Product {
+    font-size: 20px;
+  }
+
+  .btn-subir {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-col {
+    margin-bottom: 10px;
+  }
+}

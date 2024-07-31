@@ -1,0 +1,68 @@
+nav {
+  color: rgb(0, 0, 0);
+  font-family: sans-serif;
+  font-size: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1%;
+  border-bottom: 2px solid #c6c6c6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.icon-cart-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.icon-cart-button:hover {
+  background-color: rgba(205, 205, 205, 0.709);
+  border-radius: 4px;
+}
+
+.icon-cart {
+  font-size: 1.5em;
+}
+
+#tittle {
+  font-style: italic;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.TodosLosTex {
+  font-size: 20px;
+}
+
+.separacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.botones {
+  background-color: rgba(205, 205, 205, 0.709);
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.botones:hover {
+  background-color: rgb(205, 205, 205);
+}

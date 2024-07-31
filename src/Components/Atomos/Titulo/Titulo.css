@@ -1,0 +1,28 @@
+.titulo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+}
+
+.titulo-main {
+    color: #333;
+    font-size: 2rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    margin: 0;
+    margin-bottom: 0rem;
+}
+
+.titulo-sub {
+    color: #333;
+    font-size: 2rem;
+    font-family: 'Georgia', serif;
+    font-weight: normal;
+    line-height: 1.4;
+    text-align: left;
+    margin: 0;
+    margin-top: 0;
+}

@@ -1,0 +1,15 @@
+.BotonInicioss{
+    padding: 15px 35px;
+    font-size: 16px;
+    background-color: rgba(205, 205, 205, 0.709);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+
+}
+
+.BotonInicioss:hover{
+    background-color: rgb(205, 205, 205);
+  }

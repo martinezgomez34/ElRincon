@@ -1,0 +1,24 @@
+.Coat {
+  display: flex;
+  flex-direction: column; 
+  min-height: 100vh; 
+}
+
+.products-container {
+  flex: 1;
+}
+
+.contenedorAbajo {
+  display: flex;
+  justify-content: end; 
+}
+
+.Abajo {
+  margin-top: auto; 
+}
+
+/* Estilo del footer para estar al final del contenedor principal */
+.Footer {
+  margin-top: auto;
+}
+

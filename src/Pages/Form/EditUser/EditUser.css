@@ -1,0 +1,49 @@
+.form {
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form .form-control {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .form .form-control::placeholder {
+    color: #aaa;
+  }
+  
+  .form .btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form .btn:hover {
+    background-color: #555;
+  }
+  
+  .form .error-message {
+    color: red;
+  }
+  
+  .form .success-message {
+    color: green;
+  }
+  
+  .toggle-password {
+    cursor: pointer;
+  }
+  
