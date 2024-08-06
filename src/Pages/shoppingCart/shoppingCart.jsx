@@ -11,6 +11,9 @@ import '../shoppingCart/shopping.css';
 import Checkout from '../../Components/Organismos/Pay/Pay.jsx';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
+
+const placeholderImage = 'http://127.0.0.1:3000/images/placeholder-image.jpg';
+
 const initialOptions = {
   "client-id": "AXvDtdNtLNJ4MnR19gKSSb9S6RJBpcUQzQ1_oK32vTOqjwDTBVa-3P8RLmfCjgl8CXkgL_wt2Ks7wo0e",
   currency: "MXN",
@@ -157,12 +160,22 @@ const ShoppingCart = () => {
         <h1>Carrito de Compras</h1>
         {products.map((product, index) => (
           <div key={index} className="product-item">
-            <img src={product.url} alt={product.name} id="productimage" />
+            <img
+              src={product.url ? product.url : placeholderImage}
+              alt={product.name || 'Producto'}
+              id="productimage"
+            />
             <div className="product-details">
-              <h2>
-                {product.name} <span className="product-price">${product.price}</span>
-              </h2>
-              <p>Cantidad: {product.amount} <span className="product-total">Total: ${product.total.toFixed(2)}</span></p>
+              {product.name ? (
+                <>
+                  <h2>
+                    {product.name} <span className="product-price">${product.price}</span>
+                  </h2>
+                  <p>Cantidad: {product.amount} <span className="product-total">Total: ${product.total.toFixed(2)}</span></p>
+                </>
+              ) : (
+                <p>Hubo un problema con este producto. Es mejor eliminar el pedido.</p>
+              )}
             </div>
             <button className="delete-button" onClick={() => handleDeleteProduct(product.order_id)}>
               <FontAwesomeIcon icon={faTrash} />
@@ -178,23 +191,23 @@ const ShoppingCart = () => {
           </button>
         </div>
         <div>
-          <h2>Direccion</h2>
+          <h2>Dirección</h2>
           <input
-              id="lastName"
-              type="text"
-              className="form-control"
-              value={address}
-              onChange={handleAddressChange}
-          ></input>
+            id="address"
+            type="text"
+            className="form-control"
+            value={address}
+            onChange={handleAddressChange}
+          />
         </div>
         <div id="checkout-button">
-        <PayPalScriptProvider options={initialOptions}>
-          <Checkout 
-          onApprove={(orderIds) => handleCheckout(orderIds)} 
-          total={total} 
-          orderIds={products.map(product => product.order_id)} // Pasar IDs de los pedidos
-          />
-        </PayPalScriptProvider>
+          <PayPalScriptProvider options={initialOptions}>
+            <Checkout 
+              onApprove={(orderIds) => handleCheckout(orderIds)} 
+              total={total} 
+              orderIds={products.map(product => product.order_id)} // Pasar IDs de los pedidos
+            />
+          </PayPalScriptProvider>
         </div>
       </div>
       <Footer />

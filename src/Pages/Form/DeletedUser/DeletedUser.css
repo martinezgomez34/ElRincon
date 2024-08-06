@@ -1,0 +1,106 @@
+#deleteuser-page {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .nav-header button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  
+  .nav-header button:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .user-info-card {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  
+  .user-info-card h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .user-details {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .user-details h3 {
+    font-size: 24px;
+  }
+  
+  .user-details p {
+    font-size: 16px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  .success-message,
+  .error-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  

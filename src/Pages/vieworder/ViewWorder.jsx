@@ -36,31 +36,62 @@ const ViewWorder = () => {
     navigate('/singleorder', { state: { product } });
   };
 
+  // Map for sizes, colors, and gender
+  const sizeMap = {
+    1: 'S (Chica)',
+    2: 'M (Mediana)',
+    3: 'L (Grande)',
+    4: 'XL (Extra Grande)',
+  };
+
+  const colorMap = {
+    999: 'Ninguno',
+    1: 'Rojo',
+    2: 'Azul',
+    3: 'Amarillo',
+    4: 'Verde',
+    5: 'Negro',
+    6: 'Blanco',
+    7: 'Naranja',
+    8: 'Morado',
+    9: 'Rosa',
+    10: 'Gris',
+  };
+
+  const genderMap = {
+    male: 'Hombre',
+    female: 'Mujer',
+    unisex: 'Unisex',
+  };
+
   if (!product) {
     return <div>Loading...</div>;
   }
 
   return (
     <>
-    <div>
-      <Header />
-      <Navar />
-      <div className="viewworder-container">
-        <div className="product-image-container">
-          <img src={product.url} alt={product.name} className="product-image" />
-        </div>
-        <div className="product-details-container">
-          <h1 className="product-name">{product.name}</h1>
-          <p className="product-description">{product.description}</p>
-          <div className="price-amount-container">
-            <p className="product-amount">Disponibles: {product.amount}</p>
-            <p className="product-price">${product.price}</p>
+      <div>
+        <Header />
+        <Navar />
+        <div className="viewworder-container">
+          <div className="product-image-container">
+            <img src={product.url} alt={product.name} className="product-image" />
           </div>
-          <button className='buy-button'onClick={handleBuyOnlyProduct}>Ordenar</button>
+          <div className="product-details-container">
+            <h1 className="product-name">{product.name}</h1>
+            <p className="product-description">{product.description}</p>
+            <p className="product-description">
+              producto con genero {genderMap[product.gender]} de color {colorMap[product.color_id_fk]} y de talla {sizeMap[product.size_id_fk]}
+            </p>
+            <div className="price-amount-container">
+              <p className="product-amount">Disponibles: {product.amount}</p>
+              <p className="product-price">${product.price}</p>
+            </div>
+            <button className="buy-button" onClick={handleBuyOnlyProduct}>Ordenar</button>
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
     </>
   );
 };

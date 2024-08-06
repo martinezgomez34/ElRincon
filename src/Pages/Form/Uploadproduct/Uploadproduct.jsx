@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import "../Uploadproduct/uploadproduct.css";
-import { AuthContext } from "../../../Server/AuthContext"; // Importa el AuthContext
+import { AuthContext } from "../../../Server/AuthContext"; 
+import { useNavigate } from "react-router-dom"; 
 
 const Uploadproduct = () => {
   const [file, setFile] = useState(null);
@@ -15,7 +16,8 @@ const Uploadproduct = () => {
   const [gender, setGender] = useState(""); // Nuevo estado para el género
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const { user } = useContext(AuthContext); // Usa el contexto para obtener el usuario
+  const { user, logout } = useContext(AuthContext); // Usa el contexto para obtener el usuario
+  const navigate = useNavigate(); // Usa useNavigate para la redirección
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -39,13 +41,18 @@ const Uploadproduct = () => {
   };
 
   const handleGenderChange = (e) => {
-    setGender(e.target.value); // Manejar el cambio de género
+    setGender(e.target.value); 
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccessMessage("");
+
+    if (totalAmount < 1 || price < 0.01) {
+      setError("Cantidad y precio no pueden ser negativos.");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("name", name);
@@ -56,10 +63,10 @@ const Uploadproduct = () => {
     formData.append("category_id_fk", categoryId);
     formData.append("size_id_fk", size);
     formData.append("color_id_fk", color);
-    formData.append("gender", gender); // Añadir género al formData
+    formData.append("gender", gender); 
     formData.append("created_by", user ? user.username : "Desconocido");
     formData.append("update_by", user ? user.username : "Desconocido");
-    formData.append("deleted", 0); // Cambiado a 0
+    formData.append("deleted", 0); 
 
     try {
       const response = await fetch("http://localhost:3000/api/product", {
@@ -79,7 +86,6 @@ const Uploadproduct = () => {
 
       setSuccessMessage("Producto agregado correctamente");
 
-      // Clear form after successful submission
       setName("");
       setSize("");
       setColor("");
@@ -89,12 +95,15 @@ const Uploadproduct = () => {
       setDescription("");
       setFile(null);
       setUploadedImageUrl("");
-      setGender(""); // Limpiar género después de enviar
+      setGender(""); 
+
+      navigate("/HomeAdministration"); 
     } catch (error) {
       console.error("Error al crear el producto:", error.message);
       setError("Error al crear el producto: " + error.message);
     }
   };
+
   const handleLogout = () => {
     logout();
     navigate("/");
@@ -174,9 +183,9 @@ const Uploadproduct = () => {
       
               <select value={gender} onChange={handleGenderChange}>
                 <option value="">Selecciona un género</option>
-                <option value="hombre">Hombre</option>
-                <option value="mujer">Mujer</option>
-                <option value="unisex">Unisex</option>
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+                <option value="Unisex">Unisex</option>
               </select>
             </div>
             <div className="form-group">
@@ -187,6 +196,7 @@ const Uploadproduct = () => {
                   placeholder="$0.00"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
+                  step="0.01"
                 />
               </div>
             </div>

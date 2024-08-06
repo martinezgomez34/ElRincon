@@ -29,6 +29,8 @@ import InfoPage from './Pages/InfoPage/InfoPage.jsx'
 import UpDareProduct from './Pages/Form/UpdateProduct/UpdateProduct.jsx'
 import AddAdmins from './Pages/Form/AddAdmins/AddAdmins.jsx'
 import EditUser from './Pages/Form/EditUser/EditUser.jsx'
+import DeleteProduct from './Pages/Form/DeletedProduct/DeletedProduct.jsx'
+import DeleteUser from './Pages/Form/DeletedUser/DeletedUser.jsx'
 
 const router =  createBrowserRouter([
   {
@@ -127,6 +129,14 @@ const router =  createBrowserRouter([
   {
    path: '/EditUser',
    element: <EditUser></EditUser>
+  },
+  {
+   path: '/deleteproduct',
+   element: <DeleteProduct></DeleteProduct>
+  },
+  {
+   path: '/DeleteAdmins',
+   element: <DeleteUser></DeleteUser>
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(

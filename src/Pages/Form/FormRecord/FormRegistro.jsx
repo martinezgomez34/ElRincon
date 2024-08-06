@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import logo from "../../../assets/form.png";
-import '../FormRecord/FormRegistro.css'
+import '../FormRecord/FormRegistro.css';
 
 const FormRegistro = () => {
   const [password, setPassword] = useState("");
@@ -13,6 +14,8 @@ const FormRegistro = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +44,7 @@ const FormRegistro = () => {
     }
 
     const newUser = {
-      rol_id: 1, // Establece el rol predeterminado aquí
+      rol_id: 5, 
       first_name: firstName,
       last_name: lastName,
       email: email,
@@ -75,6 +78,9 @@ const FormRegistro = () => {
       setLastName('');
       setEmail('');
       setError(''); // Limpiar cualquier mensaje de error después del registro exitoso
+
+      // Redirigir a la página de inicio de sesión
+      navigate('/FormLogin');
 
     } catch (error) {
       console.error('Error al registrar el usuario:', error.message);
@@ -175,4 +181,3 @@ const FormRegistro = () => {
 };
 
 export default FormRegistro;
-

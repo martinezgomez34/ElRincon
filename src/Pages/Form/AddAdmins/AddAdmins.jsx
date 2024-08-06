@@ -3,7 +3,7 @@ import { AuthContext } from '../../../Server/AuthContext';
 import Header from "../../../Components/Organismos/Header/Header";
 import Navar from '../../../Components/Organismos/Navar/Navar';
 import logo from "../../../assets/form.png";
-import '../FormRecord/FormRegistro.css'
+import '../FormRecord/FormRegistro.css';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -20,17 +20,38 @@ const AddAdmins = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const rol_id_fk = "2";
+  const rol_id_fk = "4";
 
   useEffect(() => {
-    if (!user || user.rol_id_fk !== 2) {
+    if (!user || (user.rol_id_fk !== 3 && user.rol_id_fk !== 4)) {
       navigate('/FormLogin');
     }
   }, [user, navigate]);
 
   const handleLogout = () => {
     logout();
-    navigate('/FormLogin');
+    navigate('/');
+  };
+
+  const checkFirstName = async (firstName) => {
+    try {
+      const responseRoles = await Promise.all([
+        fetch(`http://localhost:3000/api/user/roles/3`),
+        fetch(`http://localhost:3000/api/user/roles/4`),
+        fetch(`http://localhost:3000/api/user/roles/5`)
+      ]);
+
+      const usersRoles = await Promise.all(responseRoles.map(res => res.json()));
+      const users = usersRoles.flat();
+
+      const userWithSameName = users.find(user => user.first_name === firstName);
+      const userWithSamePassword = users.find(user => user.first_name === firstName && user.rol_id_fk === 5);
+
+      return { userWithSameName, userWithSamePassword };
+    } catch (error) {
+      console.error('Error al verificar el nombre de usuario:', error.message);
+      return { userWithSameName: null, userWithSamePassword: null };
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -55,6 +76,18 @@ const AddAdmins = () => {
     }
     if (password !== passwordRepeat) {
       setError("Las contraseñas no coinciden");
+      return;
+    }
+
+    const { userWithSameName, userWithSamePassword } = await checkFirstName(firstName);
+
+    if (userWithSameName) {
+      setError("El nombre de usuario ya está en uso");
+      return;
+    }
+
+    if (userWithSamePassword && userWithSamePassword.password === password) {
+      setError("La contraseña ya está siendo utilizada, por favor cambie la contraseña");
       return;
     }
 
@@ -94,6 +127,9 @@ const AddAdmins = () => {
       setEmail('');
       setError('');
 
+      // Redireccionar al usuario al home
+      navigate('/HomeAdministration');
+
     } catch (error) {
       console.error('Error al registrar el usuario:', error.message);
       setError('Error al registrar el usuario: ' + error.message);
@@ -111,7 +147,7 @@ const AddAdmins = () => {
   const validatePassword = (value) => {
     return value.length >= 8;
   };
-  
+
   return (
     <div id="addadmins-page">
       <div className="nav-header">
@@ -122,7 +158,7 @@ const AddAdmins = () => {
         <form className="form" onSubmit={handleSubmit}>
           <h1 className="titl-19">Registro de Administradores</h1>
           <div className="form-group">
-            <img className='fotoReg' src={logo} alt="logo"/>
+            <img className='fotoReg' src={logo} alt="logo" />
           </div>
           <div className="form-group">
             <input

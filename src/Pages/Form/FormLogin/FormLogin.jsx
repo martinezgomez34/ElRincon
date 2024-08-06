@@ -11,7 +11,7 @@ function FormLogin() {
     const [password, setPassword] = useState("");
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
-    const [errorMessage, setErrorMessage] = useState(""); // Para manejar errores
+    const [errorMessage, setErrorMessage] = useState("");
 
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -38,7 +38,8 @@ function FormLogin() {
             });
 
             if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
+                const data = await response.json();
+                throw new Error(data.message || 'Error en la red');
             }
 
             const data = await response.json();
@@ -52,19 +53,19 @@ function FormLogin() {
                 });
 
                 if (!userResponse.ok) {
-                    throw new Error('Network response was not ok ' + userResponse.statusText);
+                    const userData = await userResponse.json();
+                    throw new Error(userData.message || 'Error en la red');
                 }
 
                 const userData = await userResponse.json();
 
-                // Actualiza el estado del usuario en el contexto
                 login({ ...userData, token: data.token });
 
-                if (userData.rol_id_fk === 2) {
-                    navigate('/HomeAdministration'); // Redirige a la página de administración
+                if (userData.rol_id_fk === 3 || userData.rol_id_fk === 4) {
+                    navigate('/HomeAdministration'); 
                 } else {
                     setSuccessMessage("Usuario ha iniciado sesión correctamente.");
-                    navigate('/'); // Redirige a la página de inicio
+                    navigate('/'); 
                 }
             } else {
                 setErrorMessage(data.message);
@@ -87,7 +88,6 @@ function FormLogin() {
                         <form className="Formulario" onSubmit={handleSubmit}>
                             <h3>Iniciar Sesión</h3>
                             
-                            
                             <label className="Label">
                                 <FontAwesomeIcon icon={faUser} className="input-icon" />
                                 <input
@@ -109,13 +109,12 @@ function FormLogin() {
                                     onChange={(e) => setPassword(e.target.value)}
                                     aria-label="Contraseña"
                                 />
-                               
                             </label>
                             <FontAwesomeIcon
-                                    icon={passwordVisible ? faEyeSlash : faEye}
-                                    className="toggle-password-icon"
-                                    onClick={togglePasswordVisibility}
-                                />
+                                icon={passwordVisible ? faEyeSlash : faEye}
+                                className="toggle-password-icon"
+                                onClick={togglePasswordVisibility}
+                            />
 
                             <div className="MovBoton">
                                 <Button name="Entrar" className="BotonInicio" />
